@@ -13,16 +13,18 @@ const UserItem = ({user}) => {
     )
 }
 
-const AuthorList = ({authors}) => {
+const UserList = ({users}) => {
     return (
         <table>
+            <th>UserID</th>
+            <th>Email</th>
+            <th>User name</th>
             <th>First name</th>
             <th>Last name</th>
-            <th>Birthday year</th>
-            {authors.map((a) => <AuthorItem author={a} />)}        
+            {users.map((u) => <UserItem user={u} />)}        
         </table>
     )
 }
 
 
-export default AuthorList;
+export default UserList;

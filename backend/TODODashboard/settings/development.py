@@ -6,14 +6,29 @@ SECRET_KEY = 'django-insecure-aup3l@$r=$yi+m3s#bin=%pshc5^lnjd(zv1&q##b0gxa993nt
 
 ALLOWED_HOSTS = ['*']
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'djangorestframework_camel_case.render.CamelCaseJSONRenderer',
+        'djangorestframework_camel_case.render.CamelCaseBrowsableAPIRenderer',
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+    'DEFAULT_PARSER_CLASSES': (
+        'djangorestframework_camel_case.parser.CamelCaseFormParser',
+        'djangorestframework_camel_case.parser.CamelCaseMultiPartParser',
+        'djangorestframework_camel_case.parser.CamelCaseJSONParser',
+    ),
 }
 
 LANGUAGE_CODE = 'ru'
