@@ -16,6 +16,7 @@ class Project(models.Model):
         db_table = 'app_project'
         verbose_name = "project"
         verbose_name_plural = "projects"
+        ordering = ['id']
 
 
 class Note(models.Model):
@@ -31,3 +32,5 @@ class Note(models.Model):
         db_table = 'app_note'
         verbose_name = "note"
         verbose_name_plural = "notes"
+        ordering = ['id']
+
