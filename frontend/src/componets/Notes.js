@@ -18,9 +18,6 @@ const ProjectNoteList = ({notes}) => {
 
     let filtered_note = notes.filter((note) => note.project == parseInt(id))
 
-    console.log(filtered_note)
-
-
     return (
         <table>
             <th>ID</th>
