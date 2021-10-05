@@ -1,12 +1,10 @@
 from rest_framework import serializers
 from .models import *
-from user.serializers import UserSerializer
+# from user.serializers import UserSerializer
 
 
 class ProjectSerializer(serializers.ModelSerializer):
-    name = serializers.CharField(max_length=64)
-    url = serializers.URLField(required=False)
-    users = UserSerializer(many=True)
+    # users = UserSerializer(many=True)
 
     class Meta:
         model = Project
@@ -14,10 +12,8 @@ class ProjectSerializer(serializers.ModelSerializer):
 
 
 class NoteSerializer(serializers.ModelSerializer):
-    text = serializers.CharField()
-    project = ProjectSerializer()
-    user_created = UserSerializer()
-    is_closed = serializers.BooleanField()
+    # project = ProjectSerializer()
+    # user_created = UserSerializer()
 
     class Meta:
         model = Note
