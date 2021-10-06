@@ -1,6 +1,7 @@
 Django
-djangorestframework
 django-cors-headers
-djangorestframework-camel-case
-markdown
 django-filter
+djangorestframework
+djangorestframework-camel-case
+djangorestframework-simplejwt
+markdown
