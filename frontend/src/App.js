@@ -1,5 +1,4 @@
 import React from 'react';
-import UserList from './componets/Users';
 import Menu from './componets/Menu';
 import Footer from './componets/Footer';
 import axios from 'axios';
@@ -10,7 +9,9 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      'users': []
+      'users': [],
+      'projects': [],
+      'notes': []
     }
   }
 
@@ -19,7 +20,23 @@ class App extends React.Component {
     .then(response => {
       const users = response.data
       this.setState({
-        'users': users
+        'users': users.results
+      })
+    })
+    .catch(error => console.log(error))
+    axios.get('http://127.0.0.1:8005/api/todo/projects/')
+    .then(response => {
+      const projects = response.data
+      this.setState({
+        'projects': projects.results
+      })
+    })
+    .catch(error => console.log(error))
+    axios.get('http://127.0.0.1:8005/api/todo/notes/')
+    .then(response => {
+      const notes = response.data
+      this.setState({
+        'notes': notes.results
       })
     })
     .catch(error => console.log(error))
@@ -27,17 +44,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <Menu/>
-        </div>
-        <div>
-          <UserList users = {this.state.users}/>
-        </div>
-        <div>
-          <Footer/>
-        </div>
-      </div>
+      <>
+        {/* Убрал в меню всю логику по машрутам на странице, мне кажется это более логично чем в основном теле приложения держать */}
+        <Menu state = {this.state} />
+        <Footer />
+      </>
     )
   }
 }
