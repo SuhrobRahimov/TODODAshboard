@@ -16,12 +16,16 @@ const UserItem = ({user}) => {
 const UserList = ({users}) => {
     return (
         <table>
-            <th>UserID</th>
-            <th>Email</th>
-            <th>User name</th>
-            <th>First name</th>
-            <th>Last name</th>
-            {users.map((u) => <UserItem user={u} />)}        
+            <thead>
+                <th>UserID</th>
+                <th>Email</th>
+                <th>User name</th>
+                <th>First name</th>
+                <th>Last name</th>
+            </thead>
+            <tbody>
+                {users.map((u) => <UserItem user={u} />)}        
+            </tbody>
         </table>
     )
 }

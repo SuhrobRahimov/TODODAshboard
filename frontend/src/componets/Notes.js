@@ -16,16 +16,20 @@ const NoteItem = ({note}) => {
 const ProjectNoteList = ({notes}) => {
     let { id } = useParams()
 
-    let filtered_note = notes.filter((note) => note.project == parseInt(id))
+    let filtered_note = notes.filter((note) => note.project === parseInt(id))
 
     return (
         <table>
-            <th>ID</th>
-            <th>Text</th>
-            <th>User Create</th>
-            <th>Is Closed?</th>
-            <th>Create</th>
-            {filtered_note.map((note) => <NoteItem note={note} />)}        
+            <thead>
+                <th>ID</th>
+                <th>Text</th>
+                <th>User Create</th>
+                <th>Is Closed?</th>
+                <th>Create</th>
+            </thead>
+            <tbody>
+                {filtered_note.map((note) => <NoteItem note={note} />)}     
+            </tbody>   
         </table>
     )
 }

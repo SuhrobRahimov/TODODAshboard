@@ -16,11 +16,15 @@ const ProjectItem = ({project}) => {
 const ProjectList = ({projects}) => {
     return (
         <table>
-            <th>ProjectID</th>
-            <th>Name</th>
-            <th>URL</th>
-            <th>ActiveUsers</th>
-            {projects.map((project) => <ProjectItem project={project} />)}        
+            <thead>
+                <th>ProjectID</th>
+                <th>Name</th>
+                <th>URL</th>
+                <th>ActiveUsers</th>
+            </thead>
+            <tbody>
+                {projects.map((project) => <ProjectItem project={project} />)}        
+            </tbody>
         </table>
     )
 }
