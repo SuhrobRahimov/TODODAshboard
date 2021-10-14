@@ -12,8 +12,7 @@ class UserViewSet(GenericViewSet, ListModelMixin,
     pagination_class = LimitOffsetPagination
 
     def get_serializer_class(self):
-        if self.request is not None:
-            if self.request.version == 'v2':
-                return UserSerializerV2
+        if self.request.version == 'v2':
+            return UserSerializerV2
 
         return UserSerializer
