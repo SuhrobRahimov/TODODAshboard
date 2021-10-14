@@ -5,3 +5,4 @@ djangorestframework
 djangorestframework-camel-case
 djangorestframework-simplejwt
 markdown
+mixer
