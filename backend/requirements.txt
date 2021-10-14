@@ -6,3 +6,4 @@ djangorestframework-camel-case
 djangorestframework-simplejwt
 markdown
 mixer
+drf-yasg
