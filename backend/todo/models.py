@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.db import models
 
 
@@ -7,7 +9,7 @@ from django.db import models
 class Project(models.Model):
     name = models.CharField(max_length=64)
     url = models.URLField()
-    users = models.ManyToManyField('user.User')
+    users = models.ManyToManyField(get_user_model())
 
     def __str__(self):
         return self.name
@@ -25,7 +27,7 @@ class Note(models.Model):
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    user_created = models.ForeignKey('user.User', on_delete=models.CASCADE)
+    user_created = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     is_closed = models.BooleanField(default=False)
 
     class Meta:

@@ -17,6 +17,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'django_filters',
     'drf_yasg',
+    'graphene_django',
 
     'user',
     'todo'
@@ -85,3 +86,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Укажем Django на нашу кастомную пользовательскую модель
 AUTH_USER_MODEL = 'user.User'
+
+GRAPHENE = {
+    "SCHEMA": "todo.schema.schema"
+}
