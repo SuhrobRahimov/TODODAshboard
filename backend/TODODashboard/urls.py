@@ -5,6 +5,7 @@ from rest_framework import permissions
 from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework.schemas import get_schema_view
+from graphene_django.views import GraphQLView
 
 from drf_yasg.views import get_schema_view as yasg_get_schema_view
 from drf_yasg import openapi
@@ -47,5 +48,7 @@ urlpatterns = [
         template_name='todo/redoc.html',
         extra_context={'schema_url': 'openapi-schema'}
     ), name='redoc'),
+
+    path("graphql/", GraphQLView.as_view(graphiql=True)),
 
 ]
