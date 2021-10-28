@@ -39,7 +39,7 @@ class App extends React.Component {
 
   loadData() {
     const headers = this.getHeaders()
-    axios.get('http://127.0.0.1:8005/api/users/', {headers})
+    axios.get('http://todo_backend_nginx/api/users/', {headers})
     .then(response => {
       const users = response.data
       this.setState({
@@ -53,7 +53,7 @@ class App extends React.Component {
       })
     })
 
-    axios.get('http://127.0.0.1:8005/api/todo/projects/', {headers})
+    axios.get('http://todo_backend_nginx/api/todo/projects/', {headers})
     .then(response => {
       const projects = response.data
       this.setState({
@@ -67,7 +67,7 @@ class App extends React.Component {
       })
     })
 
-    axios.get('http://127.0.0.1:8005/api/todo/notes/', {headers})
+    axios.get('http://todo_backend_nginx/api/todo/notes/', {headers})
     .then(response => {
       const notes = response.data
       this.setState({
@@ -83,7 +83,7 @@ class App extends React.Component {
   }
 
   login(email, password) {
-    axios.post('http://127.0.0.1:8005/auth/api-token/ ', {'username': email, 'password': password})
+    axios.post('http://todo_backend_nginx/auth/api-token/ ', {'username': email, 'password': password})
     .then(response => {
       console.log(response)
       localStorage.setItem('token', response.data.token)
@@ -101,7 +101,7 @@ class App extends React.Component {
 
   createProject(name, url, activeUsers) {
     const headers = this.getHeaders()
-    axios.post('http://127.0.0.1:8005/api/todo/projects/', {'name': name, 'url': url, 'users': activeUsers}, {headers})
+    axios.post('http://todo_backend_nginx/api/todo/projects/', {'name': name, 'url': url, 'users': activeUsers}, {headers})
     .then(response => {
       this.loadData()
       alert('Project created!')
@@ -114,7 +114,7 @@ class App extends React.Component {
 
     let userCreated = this.state.users.find(item => item.email === this.state.email).id;
 
-    axios.post('http://127.0.0.1:8005/api/todo/notes/', {'text': text, 'project': parseInt(project), 'userCreated': userCreated}, {headers})
+    axios.post('http://todo_backend_nginx/api/todo/notes/', {'text': text, 'project': parseInt(project), 'userCreated': userCreated}, {headers})
     .then(response => {
       this.loadData()
       alert('Note created!')
@@ -127,7 +127,7 @@ class App extends React.Component {
 
   deleteProject(id) {
     const headers = this.getHeaders()
-    axios.delete(`http://127.0.0.1:8005/api/todo/projects/${id}`, {headers})
+    axios.delete(`http://todo_backend_nginx/api/todo/projects/${id}`, {headers})
     .then(response => {
       this.loadData()
       alert('Project delete!')
@@ -137,7 +137,7 @@ class App extends React.Component {
 
   closeNote(id) {
     const headers = this.getHeaders()
-    axios.delete(`http://127.0.0.1:8005/api/todo/notes/${id}`, {headers})
+    axios.delete(`http://todo_backend_nginx/api/todo/notes/${id}`, {headers})
     .then(response => {
       this.loadData()
       alert('TODO Closed!')

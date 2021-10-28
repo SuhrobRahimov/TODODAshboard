@@ -1,0 +1,41 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:13.4
+    container_name: 'todo_database'
+    privileged: true
+    environment:
+      POSTGRES_USER: homework
+      POSTGRES_PASSWORD: homework_fun
+      POSTGRES_DB: todo
+    volumes:
+      - ./database:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: 'todo_backend'
+    privileged: true
+    command: bash -c "
+      python manage.py migrate
+      && python manage.py create_users
+      && python manage.py generate_tokens
+      && gunicorn TODODashboard.wsgi -b 0.0.0.0:8000
+      "
+    depends_on:
+      - db
+  nginx:
+    build: ./nginx
+    container_name: 'todo_backend_nginx'
+    privileged: true
+    depends_on:
+      - backend
+
+  frontend:
+    build: ./frontend
+    container_name: 'todo_frontend'
+    privileged: true
+    ports:
+      - "8888:80"
+    depends_on:
+      - nginx
