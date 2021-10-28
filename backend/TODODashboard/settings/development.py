@@ -11,13 +11,17 @@ ALLOWED_HOSTS = ['*']
 LANGUAGE_CODE = 'ru'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+    "http://todo_frontend",
 ]
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'todo',
+        'USER': 'homework',
+        'PASSWORD': 'homework_fun',
+        'HOST': 'todo_database',
+        'PORT': '5432',
     }
 }
 

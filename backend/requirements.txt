@@ -4,7 +4,9 @@ django-filter
 djangorestframework
 djangorestframework-camel-case
 djangorestframework-simplejwt
+psycopg2-binary
 markdown
 mixer
 drf-yasg
 graphene-django
+gunicorn

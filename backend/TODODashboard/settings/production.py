@@ -4,19 +4,20 @@ from .base import *
 
 DEBUG = False
 
-SECRET_KEY = ''
+SECRET_KEY = 'django-insecure-aup3l@$r=$yi+m3s#bin=%pshc5^lnjd(zv1&q##b0gxa993nt'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 LANGUAGE_CODE = 'en-us'
 
-CORS_ALLOWED_ORIGINS = [
-
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+# ]
 
 DATABASES = {
     'default': {
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
